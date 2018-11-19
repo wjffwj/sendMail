@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gym-common" />
+        <module name="gym-dao" />
+        <module name="gym-domain" />
+        <module name="gym-inner-api" />
+        <module name="gym-inner-api-impl" />
+        <module name="gym-manager" />
+        <module name="gym-service" />
+        <module name="gym-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gym-common" target="1.5" />
+      <module name="gym-dao" target="1.5" />
+      <module name="gym-domain" target="1.5" />
+      <module name="gym-inner-api" target="1.5" />
+      <module name="gym-inner-api-impl" target="1.7" />
+      <module name="gym-manager" target="1.5" />
+      <module name="gym-service" target="1.5" />
+      <module name="gym-web" target="8" />
+      <module name="稳定版" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

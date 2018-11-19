@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wjf.dao.mail.MailDao" >
+    <resultMap id="BaseResultMap" type="com.wjf.domain.entity.Mail" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="created" property="created" jdbcType="TIMESTAMP"/>
+        <result column="updated" property="updated" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.wjf.domain.entity.Mail">
+        insert into mail(id,content,status,created,updated) values (#{id,jdbcType=INTEGER},#{content,jdbcType=VARCHAR},
+        #{status,jdbcType=INTEGER},#{created,jdbcType=TIMESTAMP},#{updated,jdbcType=TIMESTAMP})
+    </insert>
+
+
+    <select id="getMails" parameterType="com.wjf.domain.entity.Mail" resultMap="BaseResultMap">
+        select * from mail where status = 1
+    </select>
+
+
+
+
+
+</mapper>

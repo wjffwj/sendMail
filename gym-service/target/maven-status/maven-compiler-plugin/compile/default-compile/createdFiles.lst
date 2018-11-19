@@ -1,0 +1,6 @@
+com\wjf\service\BaseService.class
+com\wjf\service\impl\ContentServiceImpl.class
+com\wjf\sms\SmsSender.class
+com\wjf\mail\MailSender.class
+com\wjf\service\ContentService.class
+com\wjf\rpc\MailInnerFacadeImpl.class

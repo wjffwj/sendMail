@@ -1,0 +1,5 @@
+com\wjf\domain\entity\Content.class
+com\wjf\domain\bo\MailBO.class
+com\wjf\domain\query\MailQuery.class
+com\wjf\domain\bo\ContentBO.class
+com\wjf\domain\entity\Mail.class

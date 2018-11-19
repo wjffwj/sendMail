@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gym-common/gym-common.iml" filepath="$PROJECT_DIR$/gym-common/gym-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gym-dao/gym-dao.iml" filepath="$PROJECT_DIR$/gym-dao/gym-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gym-domain/gym-domain.iml" filepath="$PROJECT_DIR$/gym-domain/gym-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gym-inner-api/gym-inner-api.iml" filepath="$PROJECT_DIR$/gym-inner-api/gym-inner-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gym-inner-api-impl/gym-inner-api-impl.iml" filepath="$PROJECT_DIR$/gym-inner-api-impl/gym-inner-api-impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gym-manager/gym-manager.iml" filepath="$PROJECT_DIR$/gym-manager/gym-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gym-service/gym-service.iml" filepath="$PROJECT_DIR$/gym-service/gym-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gym-web/gym-web.iml" filepath="$PROJECT_DIR$/gym-web/gym-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/稳定版.iml" filepath="$PROJECT_DIR$/稳定版.iml" />
+    </modules>
+  </component>
+</project>

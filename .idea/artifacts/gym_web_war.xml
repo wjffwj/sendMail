@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="gym-web:war">
+    <output-path>$PROJECT_DIR$/gym-web/target</output-path>
+    <root id="archive" name="gym-web.war">
+      <element id="artifact" artifact-name="gym-web:war exploded" />
+    </root>
+  </artifact>
+</component>
