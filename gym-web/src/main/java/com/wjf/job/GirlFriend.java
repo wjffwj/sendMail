@@ -11,10 +11,15 @@ import com.wjf.mail.MailSender;
 import com.wjf.mananger.MailManager;
 import com.wjf.service.BaseService;
 import com.wjf.service.ContentService;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,11 +62,34 @@ public class GirlFriend extends BaseService {
         this.info("发送邮件任务结束.....");
 
     }
-
-
-
-
-
-
+    @Scheduled(cron = "0 */1 * * * ?")
+    public void executeTianQi(){
+        try {
+            Document document = Jsoup.connect("http://www.tianqi.com/fularjiqu/").get();
+            Elements elements = document.select("dd[class=name]");
+            Element element = elements.get(0);
+            Elements p = element.select("h2");
+            //城市名称
+            String cityName = p.text();
+            Element date = document.select("dd[class=week]").get(0);
+            //日期
+            String dateTime = date.text();
+            //当前温度
+            String wenDu = document.select("p[class=now]").get(0).text();
+            //温度区间
+            String wenDuQujian = document.select("dd[class=weather]").select("span").get(0).text();
+            // System.out.println(wenDuQujian);
+            //空气质量
+            String kQ= document.select("dd[class=kongqi]").get(0).text();
+            //  System.out.println(kQ);
+            String detail=cityName+"\n"+"日期："+dateTime+"\n"+"当前温度："+wenDu+"\n"+"今日温度区间："+wenDuQujian+"\n"+
+                    kQ+"\n"+"爱你哦~";
+            System.out.println(detail);
+           // mailSender.simpleSend("今日天气情况 ",detail,UserUtils.SEND_MAIL);
+            mailSender.simpleSend("今日天气情况 ",detail,UserUtils.ME);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

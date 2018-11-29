@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -94,46 +95,84 @@ public class Test {
     @org.junit.Test
     public void saveLove2() {
         String input = new Scanner(System.in).next();
-        if (input.equals("晚安")){
+        if (input.equals("晚安")) {
             System.out.println("想你");
         }
     }
 
     @org.junit.Test
-    public void testDate(){
-        Date date=new Date();
+    public void testDate() {
+        Date date = new Date();
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Date date1=new Date();
-        if(date1.after(date)){
+        Date date1 = new Date();
+        if (date1.after(date)) {
             System.out.println("ok");
-        }else {
+        } else {
             System.out.println("操蛋。。。");
         }
     }
+
     @org.junit.Test
-    public void testStringToLong(){
-        String str=new String("87123123123");
-        Long value=Long.valueOf(str);
+    public void testStringToLong() {
+        String str = new String("87123123123");
+        Long value = Long.valueOf(str);
         System.out.println(value);
     }
+
     @org.junit.Test
-    public void testExit(){
-        Boolean exist=null;
-        exist=false;
-        if(exist!=null&&!exist){
+    public void testExit() {
+        Boolean exist = null;
+        exist = false;
+        if (exist != null && !exist) {
             System.out.println("ok");
-        }else{
+        } else {
             System.out.println(1);
         }
     }
+
     @org.junit.Test
-    public void testOrg(){
-        Boolean f=false;
+    public void testOrg() {
+        Boolean f = false;
         System.out.println(f.toString());
+
+    }
+
+    @org.junit.Test
+    public void testCuurent() {
+        Date date = new Date(System.currentTimeMillis() - 1000 * 60);
+        System.out.println(date);
+    }
+
+    @org.junit.Test
+    public void getTQYB() {
+        try {
+            Document document = Jsoup.connect("http://www.tianqi.com/fularjiqu/").get();
+            Elements elements = document.select("dd[class=name]");
+            Element element = elements.get(0);
+            Elements p = element.select("h2");
+            //城市名称
+            String cityName = p.text();
+            Element date = document.select("dd[class=week]").get(0);
+            //日期
+            String dateTime = date.text();
+            //当前温度
+            String wenDu = document.select("p[class=now]").get(0).text();
+            //温度区间
+            String wenDuQujian = document.select("dd[class=weather]").select("span").get(0).text();
+          // System.out.println(wenDuQujian);
+            //空气质量
+            String kQ= document.select("dd[class=kongqi]").get(0).text();
+          //  System.out.println(kQ);
+            String detail=cityName+"\n"+"日期："+dateTime+"\n"+"当前温度："+wenDu+"\n"+"今日温度区间："+wenDuQujian+"\n"+
+                    kQ+"\n"+"爱你哦~";
+            System.out.println(detail);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
