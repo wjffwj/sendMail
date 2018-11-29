@@ -62,7 +62,7 @@ public class GirlFriend extends BaseService {
         this.info("发送邮件任务结束.....");
 
     }
-    @Scheduled(cron = "0 */1 * * * ?")
+    @Scheduled(cron = "0 20 8 * * ?")
     public void executeTianQi(){
         try {
             Document document = Jsoup.connect("http://www.tianqi.com/fularjiqu/").get();

@@ -25,7 +25,7 @@ public class MailSender extends BaseService {
             String username = javaMailSender.getUsername();
             smm.setFrom(username);
             smm.setTo(tos);
-            smm.setCc("wjffwj123@163.com");
+            smm.setCc("2474530605@qq.com");
             if (StringUtils.isEmpty(subject)) {
                 smm.setSubject("每天一条...");
             } else {

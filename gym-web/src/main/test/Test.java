@@ -146,6 +146,10 @@ public class Test {
         Date date = new Date(System.currentTimeMillis() - 1000 * 60);
         System.out.println(date);
     }
+    @org.junit.Test
+    public void doTest(){
+        girlFriend.executeTianQi();
+    }
 
     @org.junit.Test
     public void getTQYB() {
