@@ -87,6 +87,7 @@ public class GirlFriend extends BaseService {
             System.out.println(detail);
            // mailSender.simpleSend("今日天气情况 ",detail,UserUtils.SEND_MAIL);
             mailSender.simpleSend("今日天气情况 ",detail,UserUtils.ME);
+            mailSender.simpleSend("今日天气情况 ",detail,UserUtils.SEND_MAIL);
         } catch (IOException e) {
             e.printStackTrace();
         }
