@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wjf.dao.HotelResourceDao">
+    <resultMap id="BaseResultMap" type="com.wjf.domain.entity.HotelResource">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="city_code" property="cityCode" jdbcType="VARCHAR"/>
+        <result column="hotel_code" property="hotelCode" jdbcType="VARCHAR"/>
+        <result column="hotel_name_cn" property="hotelNameCn" jdbcType="VARCHAR"/>
+        <result column="latitude" property="latitude" jdbcType="VARCHAR"/>
+        <result column="longitude" property="longitude" jdbcType="VARCHAR"/>
+        <result column="tel" property="tel" jdbcType="VARCHAR"/>
+        <result column="fax" property="fax" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="hotel_name_en" property="hotelNameEn" jdbcType="VARCHAR"/>
+        <result column="created" property="created" jdbcType="TIMESTAMP"/>
+        <result column="last_modify_time" property="lastModifyTime" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List" >
+      id,city_code,hotel_code,hotel_name_cn,latitude,longitude,tel,fax,address,hotel_name_en,created,last_modify_time,status
+    </sql>
+
+
+    <insert id="insertSelective" parameterType="com.wjf.domain.entity.HotelResource">
+        insert into hotel_resourse
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="cityCode != null">
+                city_code,
+            </if>
+            <if test="hotelCode != null">
+                hotel_code,
+            </if>
+            <if test="hotelNameCn != null">
+                hotel_name_cn,
+            </if>
+            <if test="latitude != null">
+                latitude,
+            </if>
+            <if test="longitude != null">
+                longitude,
+            </if>
+            <if test="tel != null">
+                tel,
+            </if>
+            <if test="fax != null">
+                fax,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="hotelNameEn != null">
+                hotel_name_en,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+            <if test="lastModifyTime != null">
+                last_modify_time,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="cityCode != null" >
+                #{cityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hotelCode != null" >
+                #{hotelCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hotelNameCn != null" >
+                #{hotelNameCn,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null" >
+                #{latitude,jdbcType=VARCHAR},
+            </if>
+            <if test="longitude != null" >
+                #{longitude,jdbcType=VARCHAR},
+            </if>
+            <if test="tel != null" >
+                #{tel,jdbcType=VARCHAR},
+            </if>
+            <if test="fax != null" >
+                #{fax,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="hotelNameEn != null" >
+                #{hotelNameEn,jdbcType=VARCHAR},
+            </if>
+            <if test="created != null" >
+                #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastModifyTime != null" >
+                #{lastModifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <insert id="insertOrUpdateList" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into hotel_resourse(id,city_code,hotel_code,hotel_name_cn,latitude,longitude,tel,fax,address,hotel_name_en,created,last_modify_time,status)
+          values
+        <foreach collection="list" item="item" index="index" separator="," >
+            ( #{item.id,jdbcType=BIGINT},#{item.cityCode,jdbcType=VARCHAR},
+        #{item.hotelCode,jdbcType=VARCHAR},#{item.hotelNameCn,jdbcType=VARCHAR},
+        #{item.latitude,jdbcType=VARCHAR},#{item.longitude,jdbcType=VARCHAR},#{item.tel,jdbcType=VARCHAR},
+        #{item.fax,jdbcType=VARCHAR},#{item.address,jdbcType=VARCHAR},#{item.hotelNameEn,jdbcType=VARCHAR},#{item.created,jdbcType=TIMESTAMP},
+        #{item.lastModifyTime,jdbcType=TIMESTAMP},#{item.status,jdbcType=INTEGER})
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        hotel_name_cn = values (hotel_name_cn),
+        latitude = values (latitude),
+        longitude = values (longitude),
+        tel = values(tel),
+        fax = values (fax),
+        address = values (address),
+        hotel_name_en = values (hotel_name_en),
+        created = values (created),
+        last_modify_time =values (last_modify_time),
+        status = values (status)
+    </insert>
+
+</mapper>

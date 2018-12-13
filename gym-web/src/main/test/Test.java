@@ -1,5 +1,7 @@
+import com.wjf.dao.HotelResourceDao;
 import com.wjf.domain.bo.ContentBO;
 import com.wjf.domain.entity.Content;
+import com.wjf.domain.entity.HotelResource;
 import com.wjf.job.GirlFriend;
 import com.wjf.mananger.ContentManager;
 import org.jsoup.Jsoup;
@@ -12,7 +14,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,6 +29,8 @@ public class Test {
     private ContentManager contentManager;
     @Autowired
     private GirlFriend girlFriend;
+    @Autowired
+    private HotelResourceDao dao;
 
     @org.junit.Test
     public void test() {
@@ -178,6 +184,18 @@ public class Test {
             e.printStackTrace();
         }
 
+    }
+    @org.junit.Test
+    public void testInsert(){
+        HotelResource record=new HotelResource();
+        record.setCityCode("123111");
+        record.setHotelCode("12311");
+        record.setCreated(new Date());
+        record.setLastModifyTime(new Date());
+        record.setStatus(1);
+        List<HotelResource> list=new ArrayList<>();
+        list.add(record);
+        dao.insertOrUpdateList(list);
     }
 
 }
