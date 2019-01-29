@@ -12,7 +12,7 @@
 </head>
 <body>
 qweqweqwe
-
+<a href="${pageContext.request.contextPath}/export/sb">sb点击此处</a>
 ${message}
 </body>
 </html>
